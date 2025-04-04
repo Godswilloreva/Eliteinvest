@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>InvestElite - Login</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+</head>
+<body style="margin:0; background-color:#000; font-family:Segoe UI, sans-serif; color:#fff; display:flex; flex-direction:column; min-height:100vh;">
+
+  <!-- HEADER -->
+  <div style="background-color:#111; padding:20px; text-align:center; box-shadow:0 2px 10px #FFD700;">
+    <h1 style="margin:0; font-size:24px; color:#FFD700;">Welcome Back</h1>
+    <p style="font-size:12px; color:#ccc;">Login to your InvestElite account</p>
+  </div>
+
+  <!-- LOGIN FORM -->
+  <form onsubmit="return validateLogin()" style="flex:1; display:flex; flex-direction:column; align-items:center; padding:20px;">
+
+    <input type="text" id="username" placeholder="Username" style="margin:10px; padding:12px; width:90%; border-radius:8px; border:none; background:#111; color:#fff;">
+    
+    <input type="password" id="password" placeholder="Password" style="margin:10px; padding:12px; width:90%; border-radius:8px; border:none; background:#111; color:#fff;">
+    
+    <!-- VERIFICATION CODE -->
+    <div style="margin:10px; width:90%; display:flex; align-items:center; justify-content:space-between;">
+      <div id="randomCode" style="padding:10px 20px; background:#FFD700; color:#000; font-weight:bold; border-radius:5px;"></div>
+      <input type="text" id="codeInput" placeholder="Enter code" style="padding:10px; width:60%; border-radius:8px; border:none; background:#111; color:#fff;">
+    </div>
+
+    <p id="error" style="color:red; font-size:12px; margin-top:5px;"></p>
+
+    <button type="submit" style="margin-top:20px; padding:12px 25px; background:#FFD700; color:#000; font-weight:bold; border:none; border-radius:30px; box-shadow:0 0 8px #FFD700;">
+      Login
+    </button>
+
+    <p style="margin-top:15px; font-size:13px; color:#ccc;">
+      Don’t have an account? <a href="register.html" style="color:#FFD700;">Register</a>
+    </p>
+  </form>
+
+  <!-- FOOTER -->
+  <div style="background-color:#111; padding:12px; text-align:center; font-size:12px; color:#777; margin-top:auto;">
+    &copy; 2025 InvestElite. All rights reserved.
+  </div>
+
+  <script>
+    let currentCode = "";
+
+    function generateCode() {
+      currentCode = Math.floor(1000 + Math.random() * 9000).toString();
+      document.getElementById("randomCode").textContent = currentCode;
+    }
+
+    setInterval(generateCode, 10000); // every 10 seconds
+    window.onload = generateCode;
+
+    function validateLogin() {
+      const username = document.getElementById("username").value.trim();
+      const password = document.getElementById("password").value.trim();
+      const codeInput = document.getElementById("codeInput").value.trim();
+      const error = document.getElementById("error");
+
+      if (!username || !password || !codeInput) {
+        error.textContent = "All fields are required.";
+        return false;
+      }
+
+      if (username.length < 3 || password.length < 4) {
+        error.textContent = "Incorrect username or password.";
+        return false;
+      }
+
+      if (codeInput !== currentCode) {
+        error.textContent = "Verification code is incorrect.";
+        return false;
+      }
+
+      // Success
+      window.location.href = "dashboard-investelite.html";
+      return false;
+    }
+  </script>
+
+<br><br>
+
+<div style="margin-top: 50px; overflow: hidden; background-color: #000; padding: 15px; border-top: 2px solid gold; border-bottom: 2px solid gold;">
+  <marquee behavior="scroll" direction="left" scrollamount="3" style="color: gold; font-size: 18px; font-weight: bold; letter-spacing: 1px; text-shadow: 0 0 5px gold, 0 0 10px gold, 0 0 15px orange;">
+    Buy Crypto from: Binance | Coinbase | Kraken | KuCoin | Bitfinex | OKX | Bybit | Crypto.com | Gate.io | Bitstamp | Gemini | MEXC | Huobi Global | CoinEx | Poloniex | LBank | Pionex | Bittrex | BingX | WhiteBIT | Coincheck | BitFlyer | AscendEX | Indodax | WazirX | Paybis | Coinmama | CoinJar | CEX.IO | Binance US | Uphold | eToro | Changelly | Bitso | SpectroCoin | Payeer | Remitano | Paxful | LocalBitcoins
+  </marquee>
+</div>
+
+</body>
+</html>

@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>InvestElite - Register</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+</head>
+<body style="margin:0; background-color:#000; font-family:Segoe UI, sans-serif; color:#fff; display:flex; flex-direction:column; min-height:100vh;">
+
+  <!-- HEADER -->
+  <div style="background-color:#111; padding:20px; text-align:center; box-shadow:0 2px 10px #FFD700;">
+    <h1 style="margin:0; font-size:24px; color:#FFD700;">Create Account</h1>
+    <p style="font-size:12px; color:#ccc;">Please fill the form carefully</p>
+  </div>
+
+  <!-- FORM SECTION -->
+  <form onsubmit="return validateForm()" style="flex:1; display:flex; flex-direction:column; align-items:center; padding:20px;">
+
+    <input type="text" id="fname" placeholder="First Name" style="margin:8px; padding:10px; width:90%; border-radius:8px; border:none; background:#111; color:#fff;">
+    <input type="text" id="lname" placeholder="Last Name" style="margin:8px; padding:10px; width:90%; border-radius:8px; border:none; background:#111; color:#fff;">
+    <input type="text" id="username" placeholder="Username" style="margin:8px; padding:10px; width:90%; border-radius:8px; border:none; background:#111; color:#fff;">
+    <input type="password" id="password" placeholder="Password" style="margin:8px; padding:10px; width:90%; border-radius:8px; border:none; background:#111; color:#fff;">
+    <input type="password" id="confirmPassword" placeholder="Confirm Password" style="margin:8px; padding:10px; width:90%; border-radius:8px; border:none; background:#111; color:#fff;">
+    
+    <input type="email" id="email" placeholder="Email" style="margin:8px; padding:10px; width:90%; border-radius:8px; border:none; background:#111; color:#fff;">
+    <input type="email" id="confirmEmail" placeholder="Confirm Email" style="margin:8px; padding:10px; width:90%; border-radius:8px; border:none; background:#111; color:#fff;">
+
+    <input type="date" id="dob" placeholder="Date of Birth" style="margin:8px; padding:10px; width:90%; border-radius:8px; border:none; background:#111; color:#fff;">
+    <select id="gender" style="margin:8px; padding:10px; width:90%; border-radius:8px; border:none; background:#111; color:#fff;">
+      <option value="">Select Gender</option>
+      <option>Male</option>
+      <option>Female</option>
+      <option>Other</option>
+    </select>
+    <input type="text" id="nationality" placeholder="Nationality" style="margin:8px; padding:10px; width:90%; border-radius:8px; border:none; background:#111; color:#fff;">
+
+    <!-- Verification -->
+    <div style="display:flex; align-items:center; width:90%; margin:8px;">
+      <input type="text" id="verify" placeholder="Enter Verification Code" style="flex:1; padding:10px; border-radius:8px; border:none; background:#111; color:#fff; margin-right:10px;">
+      <span id="code" style="padding:10px 15px; background:#FFD700; color:#000; font-weight:bold; border-radius:8px;">1234</span>
+    </div>
+
+    <p id="error" style="color:red; font-size:12px; margin-top:5px;"></p>
+
+    <button type="submit" style="margin-top:20px; padding:12px 25px; background:#FFD700; color:#000; font-weight:bold; border:none; border-radius:30px; box-shadow:0 0 8px #FFD700;">
+      Register
+    </button>
+
+    <p style="margin-top:15px; font-size:13px; color:#ccc;">
+      Already have an account? <a href="login.html" style="color:#FFD700;">Login here</a>
+    </p>
+  </form>
+
+  <!-- FOOTER -->
+  <div style="background-color:#111; padding:12px; text-align:center; font-size:12px; color:#777; margin-top:auto;">
+    &copy; 2025 InvestElite. All rights reserved.
+  </div>
+
+  <script>
+    // Verification Code Generator
+    function generateCode() {
+      document.getElementById("code").textContent = Math.floor(1000 + Math.random() * 9000);
+    }
+    setInterval(generateCode, 10000);
+    generateCode();
+
+    // Validation
+    function validateForm() {
+      const fname = document.getElementById("fname").value.trim();
+      const lname = document.getElementById("lname").value.trim();
+      const username = document.getElementById("username").value.trim();
+      const password = document.getElementById("password").value;
+      const confirmPassword = document.getElementById("confirmPassword").value;
+      const email = document.getElementById("email").value.trim();
+      const confirmEmail = document.getElementById("confirmEmail").value.trim();
+      const dob = document.getElementById("dob").value;
+      const gender = document.getElementById("gender").value;
+      const nationality = document.getElementById("nationality").value.trim();
+      const verify = document.getElementById("verify").value.trim();
+      const code = document.getElementById("code").textContent.trim();
+      const error = document.getElementById("error");
+
+      if (!fname || !lname || !username || !password || !confirmPassword || !email || !confirmEmail || !dob || !gender || !nationality || !verify) {
+        error.textContent = "Please fill in all fields.";
+        return false;
+      }
+
+      if (password !== confirmPassword) {
+        error.textContent = "Password does not match.";
+        return false;
+      }
+
+      if (email !== confirmEmail) {
+        error.textContent = "Email does not match.";
+        return false;
+      }
+
+      if (verify !== code) {
+        error.textContent = "Verification code is incorrect.";
+        return false;
+      }
+
+      // Success
+      window.location.href = "dashboard-investelite.html";
+      return false; // prevent actual form submission
+    }
+  </script>
+<br><br><br>
+
+
+<div style="margin-top: 50px; overflow: hidden; background-color: #000; padding: 15px; border-top: 2px solid gold; border-bottom: 2px solid gold;">
+  <marquee behavior="scroll" direction="left" scrollamount="3" style="color: gold; font-size: 18px; font-weight: bold; letter-spacing: 1px; text-shadow: 0 0 5px gold, 0 0 10px gold, 0 0 15px orange;">
+    Buy Crypto from: Binance | Coinbase | Kraken | KuCoin | Bitfinex | OKX | Bybit | Crypto.com | Gate.io | Bitstamp | Gemini | MEXC | Huobi Global | CoinEx | Poloniex | LBank | Pionex | Bittrex | BingX | WhiteBIT | Coincheck | BitFlyer | AscendEX | Indodax | WazirX | Paybis | Coinmama | CoinJar | CEX.IO | Binance US | Uphold | eToro | Changelly | Bitso | SpectroCoin | Payeer | Remitano | Paxful | LocalBitcoins
+  </marquee>
+</div>
+
+</body>
+</html>

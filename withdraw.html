@@ -1,0 +1,169 @@
+<body style="background-color: #121212;">
+
+
+
+<!-- Crypto Withdraw Page with Wire Transfer, Cash App, PayPal, and Gift Cards -->
+<div style="max-width: 700px; margin: 60px auto; background-color: #1a1a1a; padding: 30px; border-radius: 15px; border: 2px solid gold; box-shadow: 0 0 20px gold; font-family: 'Segoe UI', sans-serif; color: white; animation: slideInWithdraw 1.5s ease-out;">
+  <h2 style="text-align: center; color: gold; font-size: 30px; margin-bottom: 25px;">Withdraw Funds</h2>
+
+  <!-- Cryptocurrency Withdrawal Section -->
+  <label style="display: block; margin-bottom: 10px; color: gold;">Select Cryptocurrency:</label>
+  <select id="withdrawCrypto" onchange="showCryptoFields()" style="width: 100%; padding: 12px; margin-bottom: 20px; background-color: #333; border: none; color: white; border-radius: 8px;">
+    <option value="">-- Choose Cryptocurrency --</option>
+    <option value="btc">Bitcoin (BTC)</option>
+    <option value="usdt">USDT</option>
+    <option value="eth">Ethereum (ETH)</option>
+    <option value="trx">Tron (TRX)</option>
+    <option value="bep20">USDT (BEP20)</option>
+  </select>
+
+  <div id="cryptoFields" style="display: none;">
+    <label style="display: block; margin-bottom: 10px; color: gold;">Wallet Address:</label>
+    <input id="withdrawWallet" type="text" placeholder="Enter wallet address" style="width: 100%; padding: 12px; margin-bottom: 20px; background-color: #222; border: none; color: white; border-radius: 8px;">
+  </div>
+
+  <!-- Non-Crypto Withdrawal Section -->
+  <label style="display: block; margin-bottom: 10px; color: gold;">Select Withdrawal Method:</label>
+  <select id="withdrawMethod" onchange="showMethodFields()" style="width: 100%; padding: 12px; margin-bottom: 20px; background-color: #333; border: none; color: white; border-radius: 8px;">
+    <option value="">-- Choose Method --</option>
+    <option value="wire_transfer">Wire Transfer</option>
+    <option value="cash_app">Cash App</option>
+    <option value="paypal">PayPal</option>
+    <option value="gift_cards">Gift Cards</option>
+  </select>
+
+  <div id="methodFields" style="display: none;">
+    <!-- Wire Transfer Fields -->
+    <div id="wireTransferFields" style="display: none;">
+      <label style="display: block; margin-bottom: 10px; color: gold;">Bank Name:</label>
+      <input id="wireBank" type="text" placeholder="Enter bank name" style="width: 100%; padding: 12px; margin-bottom: 20px; background-color: #222; border: none; color: white; border-radius: 8px;">
+      
+      <label style="display: block; margin-bottom: 10px; color: gold;">Account Name:</label>
+      <input id="wireAccountName" type="text" placeholder="Enter account name" style="width: 100%; padding: 12px; margin-bottom: 20px; background-color: #222; border: none; color: white; border-radius: 8px;">
+      
+      <label style="display: block; margin-bottom: 10px; color: gold;">Account Number:</label>
+      <input id="wireAccount" type="text" placeholder="Enter account number" style="width: 100%; padding: 12px; margin-bottom: 20px; background-color: #222; border: none; color: white; border-radius: 8px;">
+      
+      <label style="display: block; margin-bottom: 10px; color: gold;">SWIFT Code:</label>
+      <input id="wireSwiftCode" type="text" placeholder="Enter SWIFT/BIC code" style="width: 100%; padding: 12px; margin-bottom: 20px; background-color: #222; border: none; color: white; border-radius: 8px;">
+      
+      <label style="display: block; margin-bottom: 10px; color: gold;">Routing Number:</label>
+      <input id="wireRoutingNumber" type="text" placeholder="Enter routing number" style="width: 100%; padding: 12px; margin-bottom: 20px; background-color: #222; border: none; color: white; border-radius: 8px;">
+      
+      <label style="display: block; margin-bottom: 10px; color: gold;">IBAN (if applicable):</label>
+      <input id="wireIban" type="text" placeholder="Enter IBAN (if applicable)" style="width: 100%; padding: 12px; margin-bottom: 20px; background-color: #222; border: none; color: white; border-radius: 8px;">
+      
+      <label style="display: block; margin-bottom: 10px; color: gold;">Bank Address:</label>
+      <input id="wireBankAddress" type="text" placeholder="Enter bank address" style="width: 100%; padding: 12px; margin-bottom: 20px; background-color: #222; border: none; color: white; border-radius: 8px;">
+    </div>
+
+    <!-- Cash App Fields -->
+    <div id="cashAppFields" style="display: none;">
+      <label style="display: block; margin-bottom: 10px; color: gold;">Cash App ID:</label>
+      <input id="cashAppID" type="text" placeholder="Enter your Cash App ID" style="width: 100%; padding: 12px; margin-bottom: 20px; background-color: #222; border: none; color: white; border-radius: 8px;">
+    </div>
+
+    <!-- PayPal Fields -->
+    <div id="paypalFields" style="display: none;">
+      <label style="display: block; margin-bottom: 10px; color: gold;">PayPal Email:</label>
+      <input id="paypalEmail" type="email" placeholder="Enter your PayPal email" style="width: 100%; padding: 12px; margin-bottom: 20px; background-color: #222; border: none; color: white; border-radius: 8px;">
+    </div>
+
+    <!-- Gift Cards Fields -->
+    <div id="giftCardsFields" style="display: none;">
+      <label style="display: block; margin-bottom: 10px; color: gold;">Gift Card Type:</label>
+      <select id="giftCardType" style="width: 100%; padding: 12px; margin-bottom: 20px; background-color: #333; border: none; color: white; border-radius: 8px;">
+        <option value="">-- Select Card Type --</option>
+        <option value="amazon">Amazon</option>
+        <option value="itunes">iTunes</option>
+        <option value="google">Google Play</option>
+      </select>
+      <label style="display: block; margin-bottom: 10px; color: gold;">Gift Card Code:</label>
+      <input id="giftCardCode" type="text" placeholder="Enter card code" style="width: 100%; padding: 12px; margin-bottom: 20px; background-color: #222; border: none; color: white; border-radius: 8px;">
+    </div>
+  </div>
+
+  <label style="display: block; margin-bottom: 10px; color: gold;">Withdrawal Amount ($):</label>
+  <input id="withdrawAmount" type="number" placeholder="Enter amount" style="width: 100%; padding: 12px; margin-bottom: 20px; background-color: #222; border: none; color: white; border-radius: 8px;">
+
+  <button onclick="submitWithdraw()" style="width: 100%; padding: 14px; background-color: gold; color: black; font-weight: bold; border: none; border-radius: 8px; cursor: pointer; transition: 0.4s;">Submit Withdrawal</button>
+
+  <div id="withdrawMsg" style="margin-top: 20px; color: lightgreen; text-align: center; font-weight: bold; display: none;"></div>
+</div>
+
+<script>
+  function showCryptoFields() {
+    const crypto = document.getElementById("withdrawCrypto").value;
+    const cryptoFields = document.getElementById("cryptoFields");
+
+    if (crypto !== "") {
+      cryptoFields.style.display = "block";
+    } else {
+      cryptoFields.style.display = "none";
+    }
+  }
+
+  function showMethodFields() {
+    const method = document.getElementById("withdrawMethod").value;
+    const methodFields = document.getElementById("methodFields");
+    const wireTransferFields = document.getElementById("wireTransferFields");
+    const cashAppFields = document.getElementById("cashAppFields");
+    const paypalFields = document.getElementById("paypalFields");
+    const giftCardsFields = document.getElementById("giftCardsFields");
+
+    // Hide all fields
+    wireTransferFields.style.display = "none";
+    cashAppFields.style.display = "none";
+    paypalFields.style.display = "none";
+    giftCardsFields.style.display = "none";
+
+    if (method !== "") {
+      methodFields.style.display = "block";
+    } else {
+      methodFields.style.display = "none";
+    }
+
+    if (method === "wire_transfer") {
+      wireTransferFields.style.display = "block";
+    } else if (method === "cash_app") {
+      cashAppFields.style.display = "block";
+    } else if (method === "paypal") {
+      paypalFields.style.display = "block";
+    } else if (method === "gift_cards") {
+      giftCardsFields.style.display = "block";
+    }
+  }
+
+  function submitWithdraw() {
+    const crypto = document.getElementById("withdrawCrypto").value;
+    const method = document.getElementById("withdrawMethod").value;
+    const wallet = document.getElementById("withdrawWallet").value.trim();
+    const amount = document.getElementById("withdrawAmount").value;
+    const msg = document.getElementById("withdrawMsg");
+
+    if (!crypto && !method || !amount) {
+      msg.style.display = "block";
+      msg.style.color = "red";
+      msg.innerHTML = "Please fill all fields correctly.";
+      return;
+    }
+
+    msg.style.color = "lightgreen";
+    msg.style.display = "block";
+    msg.innerHTML = "Processing your withdrawal request...";
+    setTimeout(() => {
+      msg.innerHTML = "Withdrawal request submitted successfully! please kindly fund your account and try again.";
+    }, 3000);
+  }
+</script>
+
+<style>
+  @keyframes slideInWithdraw {
+    0% { opacity: 0; transform: translateY(40px); }
+    100% { opacity: 1; transform: translateY(0); }
+  }
+  button:hover {
+    transform: scale(1.05);
+    box-shadow: 0 0 10px gold;
+  }
+</style>

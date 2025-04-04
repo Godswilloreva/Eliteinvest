@@ -1,0 +1,856 @@
+<body style="margin: 0; padding: 0; font-family: 'High Tower Text', serif; background: linear-gradient(to bottom right, #0d0d0d, #1a1a1a); color: gold;">
+
+  <div style="width: 100%; background-color: #111; padding: 20px 10px; color: gold; font-family: 'High Tower Text', serif; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; animation: fadeIn 2s ease-in-out; font-size: 20px;">
+    
+    <div style="margin: 10px; text-shadow: 0 0 6px gold; font-weight: bold;">
+      💰 Account Balance: <span style="color: white;">$0</span>
+    </div>
+
+    <div style="margin: 10px;">
+      <a href="withdraw.html" style="text-decoration: none; padding: 10px 18px; background-color: gold; color: #111; border-radius: 8px; font-weight: bold; font-size: 18px; box-shadow: 0 0 12px gold; transition: transform 0.3s ease;" onmouseover="this.style.transform='scale(1.1)'" onmouseout="this.style.transform='scale(1)'">
+        🏧 Withdraw
+      </a>
+    </div>
+
+    <div style="margin: 10px;">
+      <a href="Deposit.html" style="text-decoration: none; padding: 10px 18px; background-color: gold; color: #111; border-radius: 8px; font-weight: bold; font-size: 18px; box-shadow: 0 0 12px gold; transition: transform 0.3s ease;" onmouseover="this.style.transform='scale(1.1)'" onmouseout="this.style.transform='scale(1)'">
+        💳 Deposit
+      </a>
+    </div>
+
+  </div>
+
+  <style>
+    @keyframes fadeIn {
+      from {opacity: 0; transform: translateY(-10px);}
+      to {opacity: 1; transform: translateY(0);}
+    }
+  </style>
+
+</body>
+
+
+
+
+
+
+<br><br><hr>
+
+
+
+
+<div style="margin-top: 50px; overflow: hidden; background-color: #000; padding: 15px; border-top: 2px solid gold; border-bottom: 2px solid gold;">
+  <marquee behavior="scroll" direction="left" scrollamount="3" style="color: gold; font-size: 18px; font-weight: bold; letter-spacing: 1px; text-shadow: 0 0 5px gold, 0 0 10px gold, 0 0 15px orange;">
+    Buy Crypto from: Binance | Coinbase | Kraken | KuCoin | Bitfinex | OKX | Bybit | Crypto.com | Gate.io | Bitstamp | Gemini | MEXC | Huobi Global | CoinEx | Poloniex | LBank | Pionex | Bittrex | BingX | WhiteBIT | Coincheck | BitFlyer | AscendEX | Indodax | WazirX | Paybis | Coinmama | CoinJar | CEX.IO | Binance US | Uphold | eToro | Changelly | Bitso | SpectroCoin | Payeer | Remitano | Paxful | LocalBitcoins
+  </marquee>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+<br><br><hr>
+
+
+
+<div id="transactionText" style="font-size: 22px; color: gold; text-align: center; font-family: 'High Tower Text', serif; opacity: 0; transition: opacity 1.5s ease-in-out;"></div>
+
+<script>
+  const messages = [
+    "John invested $5,000 in Real Estate",
+    "Mariam deposited $2,000 into her wallet",
+    "Alex invested $10,000 in Crypto",
+    "Chika deposited $500 for savings",
+    "Daniel invested $3,000 in Government Bonds",
+    "Faith deposited $1,500 into wallet",
+    "Obinna invested $7,000 in Real Estate",
+    "Ngozi deposited $4,000 in wallet",
+    "Kelvin invested $6,000 in Bonds",
+    "Blessing deposited $2,500 into savings",
+    "Tommy invested $8,000 in Real Estate",
+    "Sarah deposited $2,800 into savings",
+    "Jacob invested $15,000 in Crypto",
+    "Emily deposited $600 into her wallet",
+    "Daniela invested $9,000 in Bonds",
+    "Chris deposited $1,200 into savings",
+    "Barbara invested $12,000 in Real Estate",
+    "Victor deposited $1,000 into crypto",
+    "Grace invested $20,000 in Bonds",
+    "Ethan deposited $4,000 into his wallet",
+    "Maya invested $18,000 in Crypto",
+    "Zara deposited $3,500 for savings",
+    "Johnathan invested $25,000 in Real Estate",
+    "Sophia deposited $1,000 into crypto",
+    "Jack invested $30,000 in Bonds",
+    "Olivia deposited $5,000 into savings",
+    "James invested $40,000 in Real Estate",
+    "Noah deposited $2,000 into wallet",
+    "Ava invested $45,000 in Bonds",
+    "Liam deposited $1,500 into savings",
+    "Chloe invested $50,000 in Crypto",
+    "Benjamin deposited $7,000 into wallet",
+    "Isabella invested $10,500 in Real Estate",
+    "Mason deposited $4,200 into savings",
+    "Ella invested $6,800 in Bonds",
+    "Lucas deposited $3,300 for savings",
+    "Amelia invested $35,000 in Real Estate",
+    "Hannah deposited $2,800 into crypto",
+    "Charlie invested $20,000 in Bonds",
+    "Lily deposited $1,200 into savings",
+    "Samuel invested $30,000 in Crypto",
+    "Archer deposited $500 into wallet",
+    "Charlotte invested $14,000 in Real Estate",
+    "Jackie deposited $9,000 into savings",
+    "David invested $11,000 in Bonds",
+    "Layla deposited $7,500 into wallet",
+    "William invested $17,000 in Crypto",
+    "Julian deposited $6,000 for savings",
+    "Riley invested $13,000 in Real Estate",
+    "Eli deposited $10,500 into crypto",
+    "Sophie invested $8,500 in Bonds",
+    "Milo deposited $4,800 into savings"
+  ];
+
+  const textElement = document.getElementById('transactionText');
+  let current = 0;
+
+  function showMessage() {
+    textElement.style.opacity = 0; // hide the previous message
+    setTimeout(() => {
+      textElement.textContent = messages[current];
+      textElement.style.opacity = 1; // fade in the new message
+      current = (current + 1) % messages.length;
+    }, 500);
+  }
+
+  showMessage();
+  setInterval(showMessage, 5000);  // 5 seconds fade duration
+</script><br><br><hr>
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div class="investment-section">
+  <h2 class="investment-header">Investment Options</h2>
+  <div class="investment-list-container">
+    <div class="investment-list" style="animation: scrollList 30s linear infinite;">
+      <div class="investment-item">
+        <div class="investment-name">Save Money for Future use</div>
+      </div>
+      <div class="investment-item">
+        <div class="investment-name">Government Bonds</div>
+      </div>
+      <div class="investment-item">
+        <div class="investment-name">Real Estate</div>
+      </div>
+      <div class="investment-item">
+        <div class="investment-name">Halal Invest</div>
+      </div>
+      <div class="investment-item">
+        <div class="investment-name">IRA</div>
+      </div>
+      <div class="investment-item">
+        <div class="investment-name">Cryptocurrency</div>
+      </div>
+      <div class="investment-item">
+        <div class="investment-name">Master Card</div>
+      </div>
+      <div class="investment-item">
+        <div class="investment-name">Visa Card</div>
+      </div>
+      <div class="investment-item">
+        <div class="investment-name">Energy</div>
+      </div>
+      <div class="investment-item">
+        <div class="investment-name">Sustainable Investment</div>
+      </div>
+      <div class="investment-item">
+        <div class="investment-name">Construction</div>
+      </div>
+      <div class="investment-item">
+        <div class="investment-name">Agriculture</div>
+      </div>
+      <div class="investment-item">
+        <div class="investment-name">Precious Metals</div>
+      </div>
+      <div class="investment-item">
+        <div class="investment-name">Tech Investments</div>
+      </div>
+      <div class="investment-item">
+        <div class="investment-name">Luxury Goods</div>
+      </div>
+      <div class="investment-item">
+        <div class="investment-name">Collectibles</div>
+      </div>
+      <div class="investment-item">
+        <div class="investment-name">Stocks</div>
+      </div>
+      <div class="investment-item">
+        <div class="investment-name">Oil</div>
+      </div>
+      <div class="investment-item">
+        <div class="investment-name">Banking</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<style>
+  @keyframes scrollList {
+    0% {
+      transform: translateX(100%);
+    }
+    100% {
+      transform: translateX(-100%);
+    }
+  }
+
+  .investment-section {
+    padding: 20px;
+    background-color: #222;
+    color: #fff;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  }
+
+  .investment-header {
+    font-family: 'High Tower Text', serif;
+    font-size: 28px;
+    text-align: center;
+    margin-bottom: 20px;
+    color: gold;
+  }
+
+  .investment-list-container {
+    width: 100%;
+    overflow: hidden;
+    border: 2px solid gold;
+    background-color: #333;
+    border-radius: 10px;
+  }
+
+  .investment-list {
+    display: flex;
+    padding: 20px;
+    white-space: nowrap;
+  }
+
+  .investment-item {
+    text-align: center;
+    padding: 15px;
+    font-size: 20px;
+    margin-right: 40px;
+    border: 2px solid #444;
+    border-radius: 8px;
+    transition: transform 0.3s ease;
+    background-color: #444;
+  }
+
+  .investment-name {
+    font-size: 18px;
+    color: #FFD700;
+    font-weight: bold;
+    transition: color 0.3s ease;
+  }
+
+  .investment-item:hover {
+    transform: scale(1.05);
+    background-color: #555;
+    border-color: gold;
+  }
+
+  .investment-name:hover {
+    color: #FFD700;
+    transform: scale(1.1);
+  }
+</style><br><br><hr><hr>
+
+
+<div class="investment-section">
+  <h2 class="investment-header">Investment Options</h2>
+  <div class="investment-list-container">
+    <div class="investment-list" style="animation: scrollList 30s linear infinite;">
+      <div class="investment-item"><div class="investment-name">Stocks (Equities)</div></div>
+      <div class="investment-item"><div class="investment-name">Bonds (Government & Corporate)</div></div>
+      <div class="investment-item"><div class="investment-name">Mutual Funds</div></div>
+      <div class="investment-item"><div class="investment-name">Exchange-Traded Funds (ETFs)</div></div>
+      <div class="investment-item"><div class="investment-name">Real Estate Investment Trusts (REITs)</div></div>
+      <div class="investment-item"><div class="investment-name">Cryptocurrency (Bitcoin, Ethereum, etc.)</div></div>
+      <div class="investment-item"><div class="investment-name">Peer-to-Peer Lending</div></div>
+      <div class="investment-item"><div class="investment-name">Commodities (Gold, Silver, Oil)</div></div>
+      <div class="investment-item"><div class="investment-name">Foreign Exchange (Forex)</div></div>
+      <div class="investment-item"><div class="investment-name">Hedge Funds</div></div>
+      <div class="investment-item"><div class="investment-name">Venture Capital</div></div>
+      <div class="investment-item"><div class="investment-name">Angel Investing</div></div>
+      <div class="investment-item"><div class="investment-name">Private Equity</div></div>
+      <div class="investment-item"><div class="investment-name">Real Estate (Direct Property Investment)</div></div>
+      <div class="investment-item"><div class="investment-name">Crowdfunding (Equity Crowdfunding)</div></div>
+      <div class="investment-item"><div class="investment-name">Farmland Investments</div></div>
+      <div class="investment-item"><div class="investment-name">Renewable Energy</div></div>
+      <div class="investment-item"><div class="investment-name">Art and Collectibles</div></div>
+      <div class="investment-item"><div class="investment-name">Franchise Investment</div></div>
+      <div class="investment-item"><div class="investment-name">High-Interest Savings Accounts</div></div>
+      <div class="investment-item"><div class="investment-name">Money Market Funds</div></div>
+      <div class="investment-item"><div class="investment-name">Treasury Bills (T-Bills)</div></div>
+      <div class="investment-item"><div class="investment-name">CDs (Certificates of Deposit)</div></div>
+      <div class="investment-item"><div class="investment-name">High-Yield Bonds</div></div>
+      <div class="investment-item"><div class="investment-name">Fixed Annuities</div></div>
+      <div class="investment-item"><div class="investment-name">Pension Funds</div></div>
+      <div class="investment-item"><div class="investment-name">Commodity Futures</div></div>
+      <div class="investment-item"><div class="investment-name">Carbon Credits</div></div>
+      <div class="investment-item"><div class="investment-name">Agricultural Land Investments</div></div>
+      <div class="investment-item"><div class="investment-name">Wine Investments</div></div>
+      <div class="investment-item"><div class="investment-name">Luxury Watches and Jewelry</div></div>
+      <div class="investment-item"><div class="investment-name">Music Royalties</div></div>
+      <div class="investment-item"><div class="investment-name">Private Debt Funds</div></div>
+      <div class="investment-item"><div class="investment-name">Impact Investments (Socially Responsible)</div></div>
+      <div class="investment-item"><div class="investment-name">Index Funds</div></div>
+      <div class="investment-item"><div class="investment-name">Offshore Investments</div></div>
+      <div class="investment-item"><div class="investment-name">Real Estate Syndications</div></div>
+      <div class="investment-item"><div class="investment-name">Business Acquisition</div></div>
+      <div class="investment-item"><div class="investment-name">Crowdsourced Loan Platforms</div></div>
+      <div class="investment-item"><div class="investment-name">Intellectual Property (Patents, Trademarks)</div></div>
+      <div class="investment-item"><div class="investment-name">Tax Lien Certificates</div></div>
+      <div class="investment-item"><div class="investment-name">Distressed Assets Investment</div></div>
+      <div class="investment-item"><div class="investment-name">Mortgage-Backed Securities</div></div>
+      <div class="investment-item"><div class="investment-name">Gold Mining Stocks</div></div>
+      <div class="investment-item"><div class="investment-name">Corporate Bonds</div></div>
+      <div class="investment-item"><div class="investment-name">International Stocks</div></div>
+      <div class="investment-item"><div class="investment-name">Startup Funding</div></div>
+      <div class="investment-item"><div class="investment-name">Peer-to-Peer Insurance</div></div>
+      <div class="investment-item"><div class="investment-name">Student Loan Investments</div></div>
+      <div class="investment-item"><div class="investment-name">Digital Assets (NFTs, Tokenized Assets)</div></div>
+    </div>
+  </div>
+</div>
+
+<style>
+  @keyframes scrollList {
+    0% {
+      transform: translateX(100%);
+    }
+    100% {
+      transform: translateX(-100%);
+    }
+  }
+
+  .investment-section {
+    padding: 20px;
+    background-color: #222;
+    color: #fff;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  }
+
+  .investment-header {
+    font-family: 'High Tower Text', serif;
+    font-size: 28px;
+    text-align: center;
+    margin-bottom: 20px;
+    color: gold;
+  }
+
+  .investment-list-container {
+    width: 100%;
+    overflow: hidden;
+    border: 2px solid gold;
+    background-color: #333;
+    border-radius: 10px;
+  }
+
+  .investment-list {
+    display: flex;
+    padding: 20px;
+    white-space: nowrap;
+  }
+
+  .investment-item {
+    text-align: center;
+    padding: 15px;
+    font-size: 20px;
+    margin-right: 40px;
+    border: 2px solid #444;
+    border-radius: 8px;
+    transition: transform 0.3s ease;
+    background-color: #444;
+  }
+
+  .investment-name {
+    font-size: 18px;
+    color: #FFD700;
+    font-weight: bold;
+    transition: color 0.3s ease;
+  }
+
+  .investment-item:hover {
+    transform: scale(1.05);
+    background-color: #555;
+    border-color: gold;
+  }
+
+  .investment-name:hover {
+    color: #FFD700;
+    transform: scale(1.1);
+  }
+</style>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div style="max-width:1200px;margin:40px auto;padding:30px;background:#111;border-radius:20px;box-shadow:0 0 25px gold;border:2px solid gold;animation: glowBorder 5s infinite alternate;">
+  <h2 style="text-align:center;color:gold;font-family:'High Tower Text',serif;font-size:32px;margin-bottom:30px;animation: slideIn 1s ease-in-out;">Investment Options</h2>
+
+  <!-- Reusable Investment Group -->
+  <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:25px;">
+    
+    <!-- Investment Items -->
+    <div style="background:#222;padding:20px;border-radius:12px;box-shadow:0 0 12px rgba(255,215,0,0.5);transition:transform 0.5s;animation: zoomFade 1s;">
+      <h3 style="color:gold;font-size:22px;margin-bottom:10px;">Stocks (Equities)</h3>
+      <p style="color:#fff;">Amount: $500 - $50,000</p>
+      <p style="color:lightgreen;">ROI: 15% - 30%</p>
+      <div style="margin:10px 0;">
+        <span style="color:white;margin-right:10px;">Daily</span>
+        <span style="color:white;margin-right:10px;">Weekly</span>
+        <span style="color:white;margin-right:10px;">Monthly</span>
+        <span style="color:white;">Yearly</span>
+      </div>
+      <button onclick="investNow(this)" style="padding:10px 20px;background:gold;border:none;border-radius:6px;color:#000;cursor:pointer;">Invest Now</button>
+      <div class="spinner" style="display:none;margin:10px auto;border:4px solid transparent;border-top:4px solid gold;border-radius:50%;width:30px;height:30px;animation: spin 1s linear infinite;"></div>
+      <div class="message" style="display:none;color:gold;margin-top:10px;text-align:center;font-weight:bold;"></div>
+    </div>
+
+    <!-- Repeat this block below and change titles/amount/ROI/timeframes for each investment option -->
+
+    <div style="background:#222;padding:20px;border-radius:12px;box-shadow:0 0 12px rgba(255,215,0,0.5);transition:transform 0.5s;animation: zoomFade 1.2s;">
+      <h3 style="color:gold;font-size:22px;margin-bottom:10px;">Bonds (Govt. & Corporate)</h3>
+      <p style="color:#fff;">Amount: $500 - $50,000</p>
+      <p style="color:lightgreen;">ROI: 8% - 18%</p>
+      <div style="margin:10px 0;">
+        <span style="color:white;margin-right:10px;">Monthly</span>
+        <span style="color:white;">Yearly</span>
+      </div>
+      <button onclick="investNow(this)" style="padding:10px 20px;background:gold;border:none;border-radius:6px;color:#000;cursor:pointer;">Invest Now</button>
+      <div class="spinner" style="display:none;margin:10px auto;border:4px solid transparent;border-top:4px solid gold;border-radius:50%;width:30px;height:30px;animation: spin 1s linear infinite;"></div>
+      <div class="message" style="display:none;color:gold;margin-top:10px;text-align:center;font-weight:bold;"></div>
+    </div>
+
+    <!-- Add more like this -->
+    <!-- Examples -->
+    <div style="background:#222;padding:20px;border-radius:12px;box-shadow:0 0 12px rgba(255,215,0,0.5);animation: zoomFade 1.3s;">
+      <h3 style="color:gold;">Halal Investment</h3>
+      <p style="color:#fff;">Amount: $1,000 - $100,000</p>
+      <p style="color:lightgreen;">ROI: 10% - 25%</p>
+      <div style="margin:10px 0;"><span style="color:white;">Weekly</span></div>
+      <button onclick="investNow(this)" style="padding:10px 20px;background:gold;border:none;border-radius:6px;color:#000;cursor:pointer;">Invest Now</button>
+      <div class="spinner" style="display:none;margin:10px auto;border:4px solid transparent;border-top:4px solid gold;border-radius:50%;width:30px;height:30px;animation: spin 1s linear infinite;"></div>
+      <div class="message" style="display:none;color:gold;margin-top:10px;text-align:center;font-weight:bold;"></div>
+    </div>
+
+    <div style="background:#222;padding:20px;border-radius:12px;box-shadow:0 0 12px rgba(255,215,0,0.5);animation: zoomFade 1.4s;">
+      <h3 style="color:gold;">Cryptocurrency</h3>
+      <p style="color:#fff;">Amount: $500 - $200,000</p>
+      <p style="color:lightgreen;">ROI: 20% - 60%</p>
+      <div style="margin:10px 0;"><span style="color:white;">Daily</span></div>
+      <button onclick="investNow(this)" style="padding:10px 20px;background:gold;border:none;border-radius:6px;color:#000;cursor:pointer;">Invest Now</button>
+      <div class="spinner" style="display:none;margin:10px auto;border:4px solid transparent;border-top:4px solid gold;border-radius:50%;width:30px;height:30px;animation: spin 1s linear infinite;"></div>
+      <div class="message" style="display:none;color:gold;margin-top:10px;text-align:center;font-weight:bold;"></div>
+    </div>
+
+    <!-- Additional Investment Options -->
+    <div style="background:#222;padding:20px;border-radius:12px;box-shadow:0 0 12px rgba(255,215,0,0.5);animation: zoomFade 1.5s;">
+      <h3 style="color:gold;">Savings</h3>
+      <p style="color:#fff;">Amount: $200 - $20,000</p>
+      <p style="color:lightgreen;">ROI: 5% - 10%</p>
+      <div style="margin:10px 0;"><span style="color:white;">Monthly</span></div>
+      <button onclick="investNow(this)" style="padding:10px 20px;background:gold;border:none;border-radius:6px;color:#000;cursor:pointer;">Invest Now</button>
+      <div class="spinner" style="display:none;margin:10px auto;border:4px solid transparent;border-top:4px solid gold;border-radius:50%;width:30px;height:30px;animation: spin 1s linear infinite;"></div>
+      <div class="message" style="display:none;color:gold;margin-top:10px;text-align:center;font-weight:bold;"></div>
+    </div>
+
+    <div style="background:#222;padding:20px;border-radius:12px;box-shadow:0 0 12px rgba(255,215,0,0.5);animation: zoomFade 1.6s;">
+      <h3 style="color:gold;">Master Card Investment</h3>
+      <p style="color:#fff;">Amount: $300 - $15,000</p>
+      <p style="color:lightgreen;">ROI: 6% - 12%</p>
+      <div style="margin:10px 0;"><span style="color:white;">Monthly</span></div>
+      <button onclick="investNow(this)" style="padding:10px 20px;background:gold;border:none;border-radius:6px;color:#000;cursor:pointer;">Invest Now</button>
+      <div class="spinner" style="display:none;margin:10px auto;border:4px solid transparent;border-top:4px solid gold;border-radius:50%;width:30px;height:30px;animation: spin 1s linear infinite;"></div>
+      <div class="message" style="display:none;color:gold;margin-top:10px;text-align:center;font-weight:bold;"></div>
+    </div>
+
+    <div style="background:#222;padding:20px;border-radius:12px;box-shadow:0 0 12px rgba(255,215,0,0.5);animation: zoomFade 1.7s;">
+      <h3 style="color:gold;">Forex (Foreign Exchange)</h3>
+      <p style="color:#fff;">Amount: $500 - $100,000</p>
+      <p style="color:lightgreen;">ROI: 25% - 55%</p>
+      <div style="margin:10px 0;"><span style="color:white;">Daily</span></div>
+      <button onclick="investNow(this)" style="padding:10px 20px;background:gold;border:none;border-radius:6px;color:#000;cursor:pointer;">Invest Now</button>
+      <div class="spinner" style="display:none;margin:10px auto;border:4px solid transparent;border-top:4px solid gold;border-radius:50%;width:30px;height:30px;animation: spin 1s linear infinite;"></div>
+      <div class="message" style="display:none;color:gold;margin-top:10px;text-align:center;font-weight:bold;"></div>
+    </div>
+
+    <div style="background:#222;padding:20px;border-radius:12px;box-shadow:0 0 12px rgba(255,215,0,0.5);animation: zoomFade 1.8s;">
+      <h3 style="color:gold;">Agriculture</h3>
+      <p style="color:#fff;">Amount: $1,000 - $80,000</p>
+      <p style="color:lightgreen;">ROI: 20% - 35%</p>
+      <div style="margin:10px 0;"><span style="color:white;">Quarterly</span></div>
+      <button onclick="investNow(this)" style="padding:10px 20px;background:gold;border:none;border-radius:6px;color:#000;cursor:pointer;">Invest Now</button>
+      <div class="spinner" style="display:none;margin:10px auto;border:4px solid transparent;border-top:4px solid gold;border-radius:50%;width:30px;height:30px;animation: spin 1s linear infinite;"></div>
+      <div class="message" style="display:none;color:gold;margin-top:10px;text-align:center;font-weight:bold;"></div>
+    </div>
+
+    <div style="background:#222;padding:20px;border-radius:12px;box-shadow:0 0 12px rgba(255,215,0,0.5);animation: zoomFade 1.9s;">
+      <h3 style="color:gold;">Hedge Funds</h3>
+      <p style="color:#fff;">Amount: $10,000 - $500,000</p>
+      <p style="color:lightgreen;">ROI: 30% - 70%</p>
+      <div style="margin:10px 0;"><span style="color:white;">Yearly</span></div>
+      <button onclick="investNow(this)" style="padding:10px 20px;background:gold;border:none;border-radius:6px;color:#000;cursor:pointer;">Invest Now</button>
+      <div class="spinner" style="display:none;margin:10px auto;border:4px solid transparent;border-top:4px solid gold;border-radius:50%;width:30px;height:30px;animation: spin 1s linear infinite;"></div>
+      <div class="message" style="display:none;color:gold;margin-top:10px;text-align:center;font-weight:bold;"></div>
+    </div>
+
+  </div>
+</div>
+
+<script>
+  function investNow(btn) {
+    let spinner = btn.nextElementSibling;
+    let message = spinner.nextElementSibling;
+
+    spinner.style.display = "block";
+    message.style.display = "none";
+
+    setTimeout(() => {
+      spinner.style.display = "none";
+      message.style.display = "block";
+      message.textContent = "Please fund your account";
+    }, 10000);
+  }
+</script>
+
+<style>
+  @keyframes spin {
+    to {
+      transform: rotate(360deg);
+    }
+  }
+
+  @keyframes glowBorder {
+    0% {
+      box-shadow: 0 0 10px gold;
+    }
+    100% {
+      box-shadow: 0 0 40px gold;
+    }
+  }
+
+  @keyframes zoomFade {
+    from {
+      transform: scale(0.9);
+      opacity: 0;
+    }
+    to {
+      transform: scale(1);
+      opacity: 1;
+    }
+  }
+
+  @keyframes slideIn {
+    from {
+      transform: translateY(-30px);
+      opacity: 0;
+    }
+    to {
+      transform: translateY(0);
+      opacity: 1;
+    }
+  }
+</style><br><hr>
+
+
+
+
+
+
+
+
+
+
+<div style="max-width:1200px;margin:40px auto;padding:30px;background:#111;border-radius:20px;box-shadow:0 0 25px gold;border:2px solid gold;animation: glowBorder 5s infinite alternate;">
+  <h2 style="text-align:center;color:gold;font-family:'High Tower Text',serif;font-size:32px;margin-bottom:30px;animation: slideIn 1s ease-in-out;">More Options</h2>
+
+  <!-- Reusable Investment Group -->
+  <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:25px;">
+    
+    <!-- Investment Items -->
+    <div style="background:#222;padding:20px;border-radius:12px;box-shadow:0 0 12px rgba(255,215,0,0.5);transition:transform 0.5s;animation: zoomFade 1s;">
+      <h3 style="color:gold;font-size:22px;margin-bottom:10px;">Real Estate</h3>
+      <p style="color:#fff;">Amount: $500 - $50,000</p>
+      <p style="color:lightgreen;">ROI: 15% - 30%</p>
+      <div style="margin:10px 0;">
+        <span style="color:white;margin-right:10px;">Daily</span>
+        <span style="color:white;margin-right:10px;">Weekly</span>
+        <span style="color:white;margin-right:10px;">Monthly</span>
+        <span style="color:white;">Yearly</span>
+      </div>
+      <button onclick="investNow(this)" style="padding:10px 20px;background:gold;border:none;border-radius:6px;color:#000;cursor:pointer;">Invest Now</button>
+      <div class="spinner" style="display:none;margin:10px auto;border:4px solid transparent;border-top:4px solid gold;border-radius:50%;width:30px;height:30px;animation: spin 1s linear infinite;"></div>
+      <div class="message" style="display:none;color:gold;margin-top:10px;text-align:center;font-weight:bold;"></div>
+    </div>
+
+    <!-- Repeat this block below and change titles/amount/ROI/timeframes for each investment option -->
+
+    <div style="background:#222;padding:20px;border-radius:12px;box-shadow:0 0 12px rgba(255,215,0,0.5);transition:transform 0.5s;animation: zoomFade 1.2s;">
+      <h3 style="color:gold;font-size:22px;margin-bottom:10px;">Exchange Traded Fund(ETF)</h3>
+      <p style="color:#fff;">Amount: $500 - $50,000</p>
+      <p style="color:lightgreen;">ROI: 8% - 18%</p>
+      <div style="margin:10px 0;">
+        <span style="color:white;margin-right:10px;">Monthly</span>
+        <span style="color:white;">Yearly</span>
+      </div>
+      <button onclick="investNow(this)" style="padding:10px 20px;background:gold;border:none;border-radius:6px;color:#000;cursor:pointer;">Invest Now</button>
+      <div class="spinner" style="display:none;margin:10px auto;border:4px solid transparent;border-top:4px solid gold;border-radius:50%;width:30px;height:30px;animation: spin 1s linear infinite;"></div>
+      <div class="message" style="display:none;color:gold;margin-top:10px;text-align:center;font-weight:bold;"></div>
+    </div>
+
+    <!-- Add more like this -->
+    <!-- Examples -->
+    <div style="background:#222;padding:20px;border-radius:12px;box-shadow:0 0 12px rgba(255,215,0,0.5);animation: zoomFade 1.3s;">
+      <h3 style="color:gold;">Venture Capital</h3>
+      <p style="color:#fff;">Amount: $1,000 - $100,000</p>
+      <p style="color:lightgreen;">ROI: 10% - 25%</p>
+      <div style="margin:10px 0;"><span style="color:white;">Weekly</span></div>
+      <button onclick="investNow(this)" style="padding:10px 20px;background:gold;border:none;border-radius:6px;color:#000;cursor:pointer;">Invest Now</button>
+      <div class="spinner" style="display:none;margin:10px auto;border:4px solid transparent;border-top:4px solid gold;border-radius:50%;width:30px;height:30px;animation: spin 1s linear infinite;"></div>
+      <div class="message" style="display:none;color:gold;margin-top:10px;text-align:center;font-weight:bold;"></div>
+    </div>
+
+    <div style="background:#222;padding:20px;border-radius:12px;box-shadow:0 0 12px rgba(255,215,0,0.5);animation: zoomFade 1.4s;">
+      <h3 style="color:gold;">Cryptocurrency minning</h3>
+      <p style="color:#fff;">Amount: $500 - $200,000</p>
+      <p style="color:lightgreen;">ROI: 20% - 60%</p>
+      <div style="margin:10px 0;"><span style="color:white;">Daily</span></div>
+      <button onclick="investNow(this)" style="padding:10px 20px;background:gold;border:none;border-radius:6px;color:#000;cursor:pointer;">Invest Now</button>
+      <div class="spinner" style="display:none;margin:10px auto;border:4px solid transparent;border-top:4px solid gold;border-radius:50%;width:30px;height:30px;animation: spin 1s linear infinite;"></div>
+      <div class="message" style="display:none;color:gold;margin-top:10px;text-align:center;font-weight:bold;"></div>
+    </div>
+
+    <!-- Additional Investment Options -->
+    <div style="background:#222;padding:20px;border-radius:12px;box-shadow:0 0 12px rgba(255,215,0,0.5);animation: zoomFade 1.5s;">
+      <h3 style="color:gold;">Oil and Gas</h3>
+      <p style="color:#fff;">Amount: $200 - $20,000</p>
+      <p style="color:lightgreen;">ROI: 5% - 10%</p>
+      <div style="margin:10px 0;"><span style="color:white;">Monthly</span></div>
+      <button onclick="investNow(this)" style="padding:10px 20px;background:gold;border:none;border-radius:6px;color:#000;cursor:pointer;">Invest Now</button>
+      <div class="spinner" style="display:none;margin:10px auto;border:4px solid transparent;border-top:4px solid gold;border-radius:50%;width:30px;height:30px;animation: spin 1s linear infinite;"></div>
+      <div class="message" style="display:none;color:gold;margin-top:10px;text-align:center;font-weight:bold;"></div>
+    </div>
+
+    <div style="background:#222;padding:20px;border-radius:12px;box-shadow:0 0 12px rgba(255,215,0,0.5);animation: zoomFade 1.6s;">
+      <h3 style="color:gold;">Coca cola</h3>
+      <p style="color:#fff;">Amount: $300 - $15,000</p>
+      <p style="color:lightgreen;">ROI: 6% - 12%</p>
+      <div style="margin:10px 0;"><span style="color:white;">Monthly</span></div>
+      <button onclick="investNow(this)" style="padding:10px 20px;background:gold;border:none;border-radius:6px;color:#000;cursor:pointer;">Invest Now</button>
+      <div class="spinner" style="display:none;margin:10px auto;border:4px solid transparent;border-top:4px solid gold;border-radius:50%;width:30px;height:30px;animation: spin 1s linear infinite;"></div>
+      <div class="message" style="display:none;color:gold;margin-top:10px;text-align:center;font-weight:bold;"></div>
+    </div>
+
+    <div style="background:#222;padding:20px;border-radius:12px;box-shadow:0 0 12px rgba(255,215,0,0.5);animation: zoomFade 1.7s;">
+      <h3 style="color:gold;">Tesla</h3>
+      <p style="color:#fff;">Amount: $500 - $100,000</p>
+      <p style="color:lightgreen;">ROI: 25% - 55%</p>
+      <div style="margin:10px 0;"><span style="color:white;">Daily</span></div>
+      <button onclick="investNow(this)" style="padding:10px 20px;background:gold;border:none;border-radius:6px;color:#000;cursor:pointer;">Invest Now</button>
+      <div class="spinner" style="display:none;margin:10px auto;border:4px solid transparent;border-top:4px solid gold;border-radius:50%;width:30px;height:30px;animation: spin 1s linear infinite;"></div>
+      <div class="message" style="display:none;color:gold;margin-top:10px;text-align:center;font-weight:bold;"></div>
+    </div>
+
+    <div style="background:#222;padding:20px;border-radius:12px;box-shadow:0 0 12px rgba(255,215,0,0.5);animation: zoomFade 1.8s;">
+      <h3 style="color:gold;">Crowdfunding</h3>
+      <p style="color:#fff;">Amount: $1,000 - $80,000</p>
+      <p style="color:lightgreen;">ROI: 20% - 35%</p>
+      <div style="margin:10px 0;"><span style="color:white;">Quarterly</span></div>
+      <button onclick="investNow(this)" style="padding:10px 20px;background:gold;border:none;border-radius:6px;color:#000;cursor:pointer;">Invest Now</button>
+      <div class="spinner" style="display:none;margin:10px auto;border:4px solid transparent;border-top:4px solid gold;border-radius:50%;width:30px;height:30px;animation: spin 1s linear infinite;"></div>
+      <div class="message" style="display:none;color:gold;margin-top:10px;text-align:center;font-weight:bold;"></div>
+    </div>
+
+    <div style="background:#222;padding:20px;border-radius:12px;box-shadow:0 0 12px rgba(255,215,0,0.5);animation: zoomFade 1.9s;">
+      <h3 style="color:gold;">AT&T</h3>
+      <p style="color:#fff;">Amount: $10,000 - $500,000</p>
+      <p style="color:lightgreen;">ROI: 30% - 70%</p>
+      <div style="margin:10px 0;"><span style="color:white;">Yearly</span></div>
+      <button onclick="investNow(this)" style="padding:10px 20px;background:gold;border:none;border-radius:6px;color:#000;cursor:pointer;">Invest Now</button>
+      <div class="spinner" style="display:none;margin:10px auto;border:4px solid transparent;border-top:4px solid gold;border-radius:50%;width:30px;height:30px;animation: spin 1s linear infinite;"></div>
+      <div class="message" style="display:none;color:gold;margin-top:10px;text-align:center;font-weight:bold;"></div>
+    </div>
+
+  </div>
+</div>
+
+<script>
+  function investNow(btn) {
+    let spinner = btn.nextElementSibling;
+    let message = spinner.nextElementSibling;
+
+    spinner.style.display = "block";
+    message.style.display = "none";
+
+    setTimeout(() => {
+      spinner.style.display = "none";
+      message.style.display = "block";
+      message.textContent = "Please fund your account";
+    }, 10000);
+  }
+</script>
+
+<style>
+  @keyframes spin {
+    to {
+      transform: rotate(360deg);
+    }
+  }
+
+  @keyframes glowBorder {
+    0% {
+      box-shadow: 0 0 10px gold;
+    }
+    100% {
+      box-shadow: 0 0 40px gold;
+    }
+  }
+
+  @keyframes zoomFade {
+    from {
+      transform: scale(0.9);
+      opacity: 0;
+    }
+    to {
+      transform: scale(1);
+      opacity: 1;
+    }
+  }
+
+  @keyframes slideIn {
+    from {
+      transform: translateY(-30px);
+      opacity: 0;
+    }
+    to {
+      transform: translateY(0);
+      opacity: 1;
+    }
+  }
+</style>
+
+
+<br>
+
+<div style="margin-top: 50px; overflow: hidden; background-color: #000; padding: 15px; border-top: 2px solid gold; border-bottom: 2px solid gold;">
+  <marquee behavior="scroll" direction="left" scrollamount="3" style="color: gold; font-size: 18px; font-weight: bold; letter-spacing: 1px; text-shadow: 0 0 5px gold, 0 0 10px gold, 0 0 15px orange;">
+    Buy Crypto from: Binance | Coinbase | Kraken | KuCoin | Bitfinex | OKX | Bybit | Crypto.com | Gate.io | Bitstamp | Gemini | MEXC | Huobi Global | CoinEx | Poloniex | LBank | Pionex | Bittrex | BingX | WhiteBIT | Coincheck | BitFlyer | AscendEX | Indodax | WazirX | Paybis | Coinmama | CoinJar | CEX.IO | Binance US | Uphold | eToro | Changelly | Bitso | SpectroCoin | Payeer | Remitano | Paxful | LocalBitcoins
+  </marquee>
+</div>
+
+
+<br><hr>
+
+<!-- Footer Section -->
+<footer style="background-color: #2c2c2c; color: white; padding: 40px 20px; text-align: center; font-family: 'Segoe UI', sans-serif; border-top: 2px solid #ff9900; box-shadow: 0 0 20px rgba(255, 153, 0, 0.5); animation: neonPulse 2s infinite;">
+  <div style="max-width: 1200px; margin: 0 auto; display: flex; justify-content: space-between; flex-wrap: wrap; padding: 20px;">
+    <!-- Logo Section (Optional, you can replace with logo if needed) -->
+    <div style="flex: 1; margin-bottom: 20px;">
+      <h2 style="color: #ff9900; text-shadow: 0 0 10px #ff9900, 0 0 20px #ff9900, 0 0 30px #ff9900;">EliteInvest</h2>
+      <p style="color: #ccc; font-size: 14px; text-shadow: 0 0 5px #ff9900;">Empowering Your Financial Growth in a  confident way with no fear</p>
+    </div>
+
+    <!-- Quick Links Section -->
+    <div style="flex: 1; margin-bottom: 20px;">
+      <h3 style="color: #ff9900; font-size: 18px; margin-bottom: 15px; text-shadow: 0 0 5px #ff9900;">Quick Links</h3>
+      <ul style="list-style: none; padding: 0;">
+        <li><a href="faq.html" style="color: white; text-decoration: none; font-size: 14px; transition: color 0.3s;">FAQ</a></li>
+        <li><a href="help.html" style="color: white; text-decoration: none; font-size: 14px; transition: color 0.3s;">Help</a></li>
+        <li><a href="mailto:fraudteamcrypto@gmail.com" style="color: white; text-decoration: none; font-size: 14px; transition: color 0.3s;">Security Email</a></li>
+        <li><a href="mailto:investeliteconfidence@gmail.com" style="color: white; text-decoration: none; font-size: 14px; transition: color 0.3s;">Customer Service</a></li>
+        <li><a href="privacy-policy.html" style="color: white; text-decoration: none; font-size: 14px; transition: color 0.3s;">Privacy Policy</a></li>
+        <li><a href="terms-and-condition.html" style="color: white; text-decoration: none; font-size: 14px; transition: color 0.3s;">Terms & Conditions</a></li>
+      </ul>
+    </div>
+  </div>
+
+  <!-- Copyright Section -->
+  <div style="font-size: 14px; color: #ccc; padding-top: 20px; animation: fadeIn 2s;">
+    <p>&copy; 2025 EliteInvest. All rights reserved.</p>
+  </div>
+</footer>
+
+<style>
+  footer a:hover {
+    color: #ff9900;
+    text-decoration: underline;
+    text-shadow: 0 0 10px #ff9900, 0 0 20px #ff9900;
+  }
+
+  /* Neon pulse animation */
+  @keyframes neonPulse {
+    0% {
+      text-shadow: 0 0 5px #ff9900, 0 0 10px #ff9900, 0 0 15px #ff9900, 0 0 20px #ff9900;
+      transform: scale(1);
+    }
+    50% {
+      text-shadow: 0 0 10px #ff9900, 0 0 20px #ff9900, 0 0 30px #ff9900, 0 0 40px #ff9900;
+      transform: scale(1.05);
+    }
+    100% {
+      text-shadow: 0 0 5px #ff9900, 0 0 10px #ff9900, 0 0 15px #ff9900, 0 0 20px #ff9900;
+      transform: scale(1);
+    }
+  }
+
+  /* Fade in effect for copyright section */
+  @keyframes fadeIn {
+    0% {
+      opacity: 0;
+    }
+    100% {
+      opacity: 1;
+    }
+  }
+</style>
