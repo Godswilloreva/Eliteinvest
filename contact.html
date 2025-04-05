@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Contact Us - EliteInvest</title>
+</head>
+<body style="background-color: #111; color: white; font-family: Arial, sans-serif; padding: 20px;">
+
+  <h1 style="text-align:center; color: lime; text-shadow: 0 0 10px lime;">Contact Us - EliteInvest</h1>
+
+  <div style="margin: 30px auto; max-width: 600px; background: #1a1a1a; padding: 20px; border-radius: 12px; box-shadow: 0 0 10px lime;">
+    <h3>Facebook:</h3>
+    <p><a href="https://www.facebook.com/profile.php?id=61575184160221" target="_blank" style="color: skyblue;">Visit Our Facebook Page</a></p>
+
+    <h3>Emails:</h3>
+    <p><a href="mailto:fraudteamcrypto@gmail.com" style="color: skyblue;">fraudteamcrypto@gmail.com</a></p>
+    <p><a href="mailto:investeliteconfidence@gmail.com" style="color: skyblue;">investeliteconfidence@gmail.com</a></p>
+
+    <h3>Phone Numbers:</h3>
+    <p style="margin-left: 10px;">+1 (323) 761-0453</p>
+    <p style="margin-left: 10px;">+1 (323) 789-4094</p>
+    <p style="margin-left: 10px;">+1 (343) 838-4858</p>
+  </div>
+
+  <div style="max-width: 600px; margin: 40px auto; background: #222; padding: 20px; border-radius: 10px; box-shadow: 0 0 10px lime;">
+    <h2 style="text-align: center; color: lime;">Ask Our AI Assistant</h2>
+    <div id="chat-box" style="height: 200px; overflow-y: auto; border: 1px solid #555; padding: 10px; background: #000; color: lime; font-size: 14px; margin-bottom: 10px; border-radius: 5px;"></div>
+    <input type="text" id="userInput" placeholder="Ask me anything..." style="width: 70%; padding: 8px; border: none; border-radius: 5px;"/>
+    <button onclick="talk()" style="padding: 8px 15px; background: lime; color: black; border: none; border-radius: 5px; font-weight: bold;">Send</button>
+  </div>
+
+  <script>
+    function talk() {
+      const input = document.getElementById("userInput").value.toLowerCase();
+      const chatBox = document.getElementById("chat-box");
+      let response = "";
+
+      if (input.includes("how do i deposit")) {
+        response = "To deposit, go to the Deposit page and choose your preferred method.";
+      } else if (input.includes("withdraw")) {
+        response = "Visit the Withdraw page, fill the form, and submit your request.";
+      } else if (input.includes("support") || input.includes("contact")) {
+        response = "You can reach us via email or phone. All info is above.";
+      } else if (input.includes("minimum deposit")) {
+        response = "The minimum deposit is $1000 to qualify for bonus mining.";
+      } else {
+        response = "I'm here to help! Please contact support for more complex questions.";
+      }
+
+      chatBox.innerHTML += `<p><strong>You:</strong> ${input}</p>`;
+      chatBox.innerHTML += `<p><strong>AI:</strong> ${response}</p>`;
+      chatBox.scrollTop = chatBox.scrollHeight;
+      document.getElementById("userInput").value = "";
+    }
+  </script>
+
+</body>
+</html>
